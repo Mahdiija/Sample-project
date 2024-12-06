@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidebar Navigation</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <nav class="sidebar">
+        <p class="title">Mjali</p>
+        <ul>
+          <li data-page="home" class="active">Home</li>
+          <li data-page="about">About Me</li>
+          <li data-page="ex">Exprience</li>
+          <li data-page="projects">Projects</li>
+          <li data-page="contact">Contact Me</li>
+        </ul>
+        <div class="buttons">
+          <button id="theme-switcher" class="theme-button">
+            <img
+              id="theme-icon"
+              src="icons/sun-icon.svg"
+              alt="Theme Icon"
+              width="24"
+              height="24"
+            />
+          </button>
+          <button id="language-switcher" class="language-button">
+            EN / FA
+            <!-- Display initial language -->
+          </button>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Home -->
+        <div id="home" class="content active">
+          <div class="home">
+            <p class="hello content-text-en">Hello I’m</p>
+            <p class="hello content-text-fa">سلام من</p>
+            <p class="name content-text-en">Mahdi Jalinousi</p>
+            <p class="name content-text-fa">مهدی جالینوسی</p>
+            <p class="job content-text-en">I’m a FrontEnd Developer</p>
+            <p class="job content-text-fa">یک برنامه نویس فرانت اند هستم</p>
+          </div>
+        </div>
+        <!-- Home -->
+        <!-- About -->
+        <div id="about" class="content">
+          <div class="about">
+            <div class="aboutHeader">
+              <p class="aboutMe content-text-en">About Me</p>
+              <p class="aboutMe content-text-fa">درباره من</p>
+              <p class="des content-text-en">
+                Hi my name is mahdi, i am working in this role for about ona and
+                half years, i'm looking forward to learn from you guys and
+                improve my skills
+              </p>
+              <p class="des content-text-fa">
+                سلام اسم من مهدی عه, من تو پوزیشن فرانت اند حدودا یکو نیم ساله
+                که کار میکنم, مشتاق یادگیری تو تیم شما هستم تا بتونم بپیشرفت
+                کنم.
+              </p>
+            </div>
+            <div class="mainAbout">
+              <div>
+                <img class="image" src="./images/1727352472895.jpg" alt="" />
+              </div>
+              <div class="rightSide">
+                <p class="nameAbout content-text-en">Mahdi Jalinousi</p>
+                <p class="nameAbout content-text-fa">مهدی جالینوسی</p>
+                <p class="position content-text-en">FrontEnd Developer</p>
+                <p class="position content-text-fa">برنامه نویس فرانت اند</p>
+                <p class="desabout content-text-en">
+                  Hi! as a frontend developer i developed projects that is user
+                  friendly and responsive with a lot of features, i'm 21 old and
+                  i worked in this position for over 1 and half years
+                </p>
+                <p class="desabout content-text-fa">
+                  سلام! به‌عنوان یک توسعه‌دهنده فرانت‌اند، پروژه‌هایی را توسعه دادم که کاربر پسند و پاسخگو با ویژگی‌های زیادی است، من 21 ساله هستم و بیش از 1 سال و نیم در این موقعیت کار کرده‌ام.
+
+                </p>
+
+                <div class="buttonsAbout">
+                  <button class="Repository">
+                    <a class="arep content-text-en" href="">Repository</a>
+                    <a class="arep content-text-fa" href="">ریپازیتوری</a>
+                  </button>
+                  <button class="Hire">
+                    <a class="ahire content-text-en" href="">Hire Me</a>
+                    <a class="ahire content-text-fa" href="">منو بگیر:)</a>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="myStack content-text-en">My stack</p>
+              <p class="myStack content-text-fa"> چیزایی که بلدم</p>
+              <div class="icon-container">
+                <!-- Icons!!! -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- About -->
+        <!-- ex -->
+        <div id="ex" class="content">
+          <div class="project">
+            <div class="aboutHeader">
+              <p class="aboutMe content-text-en">Exprience</p>
+              <p class="aboutMe content-text-fa">تجربه کاری</p>
+            </div>
+            <div class="mainCard">
+              <div class="card" onclick="toggleCard(this)">
+                <div>
+                  <div class="cardflex">
+                    <div>
+                      <img
+                        class="ExIcon"
+                        src="./images/eramond.png"
+                        alt="era"
+                      />
+                    </div>
+                    <div class="RightCard">
+                      <div class="flex">
+                        <p class="content-text-en">Name of company:</p>
+                        <p class="content-text-fa">نام شرکت:</p>
+                        <p class="content-text-en">Eramond</p>
+                        <p class="content-text-fa">اراموند</p>
+                      </div>
+                      <div class="flex">
+                        <p class="content-text-en">Role Position:</p>
+                        <p class="content-text-fa">سمت شغلی:</p>
+                        <p class="content-text-en">FrontEnd Developer</p>
+                        <p class="content-text-fa">فرانت اند</p>
+                      </div>
+                      <div class="flex">
+                        <p class="content-text-en">Exprience:</p>
+                        <p class="content-text-fa">تجربه:</p>
+                        <p class="content-text-en">3 month</p>
+                        <p class="content-text-fa">ماه 3</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="arrow">
+                    <svg fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18 9L12 15L6 9" stroke="#eae112" />
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Hidden description below -->
+                <div class="descriptionn">
+                  <p class="descriptionn1p content-text-en">
+                    At Eramond, we are more than just an IT company—we're
+                    trailblazers in the intersection of entertainment, sports,
+                    and technology. With a team of young and exceptionally
+                    creative minds, we're passionate about redefining the
+                    landscape of entertainment and sports through innovative
+                    digital solutions.
+                  </p>
+                  <p class="descriptionn1p content-text-fa">
+                    در اراموند ما چیزی بیش از یک شرکت فناوری اطلاعات هستیم - ما
+                    در تقاطع سرگرمی، ورزش و فناوری پیشرو هستیم. با تیمی از
+                    ذهن‌های جوان و فوق‌العاده خلاق، ما مشتاق تعریف مجدد
+                    چشم‌انداز سرگرمی و ورزش از طریق راه‌حل‌های دیجیتالی نوآورانه
+                    هستیم.
+                  </p>
+                </div>
+              </div>
+              <div class="card" onclick="toggleCard1(this)">
+                <div>
+                  <div class="cardflex">
+                    <div>
+                      <img class="ExIcon" src="./images/s.webp" alt="era" />
+                    </div>
+                    <div class="RightCard">
+                      <div class="flex">
+                        <p class="content-text-en">Name of company:</p>
+                        <p class="content-text-fa">نام شرکت:</p>
+                        <p class="content-text-en">Setare Aval</p>
+                        <p class="content-text-fa">ستاره اول</p>
+                      </div>
+                      <div class="flex">
+                        <p class="content-text-en">Role Position:</p>
+                        <p class="content-text-fa">سمت شغلی:</p>
+                        <p class="content-text-en">
+                          Entern & junior FrontEnd Developer
+                        </p>
+                        <p class="content-text-fa">فرانت اند</p>
+                      </div>
+                      <div class="flex">
+                        <p class="content-text-en">Exprience:</p>
+                        <p class="content-text-fa">تجربه:</p>
+                        <p class="content-text-en">10 month</p>
+                        <p class="content-text-fa">10 ماه</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="arrow1">
+                    <svg fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18 9L12 15L6 9" stroke="#eae112" />
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Hidden description below -->
+                <div class="descriptionn1">
+                  <p class="descriptionn1p content-text-en">
+                    As one of the prominent companies in the country's
+                    telecommunication field, Setare Aval has always tried to
+                    respond to the needs of its 56 million customers with a
+                    technological approach. In this regard, in addition to the
+                    development and implementation of the #1 command code
+                    service in all operators, with the Star product, it has
+                    entered the field of payment applications and is always
+                    trying to satisfy the large family. Star's first customers
+                  </p>
+                  <p class="descriptionn1p content-text-fa">
+                    ستاره اول به عنوان یکی از شرکت های مطرح در حوزه تلکام کشور،
+                    همواره کوشیده است با نگاه فناورانه نسبت به پاسخگویی نیازهای
+                    جامعه 56 میلیون نفری مشتریان خود حرکت نماید. در همین راستا
+                    علاوه بر توسعه و پیاده سازی سرویس کد دستوری #1*در تمامی
+                    اپراتور ها ، با محصول ستاره یک پای در عرصه ی اپلیکیشن های
+                    پرداخت نهاده است و همواره در تلاش است رضایت خانواده بزرگ
+                    مشتریان ستاره اول را کسب نماید.
+                  </p>
+                </div>
+              </div>
+              <div class="card" onclick="toggleCard2(this)">
+                <div>
+                  <div class="cardflex">
+                    <div>
+                      <img
+                        class="ExIcon"
+                        src="./images/website.png"
+                        alt="era"
+                      />
+                    </div>
+                    <div class="RightCard">
+                      <div class="flex">
+                        <p class="content-text-en">Name of University:</p>
+                        <p class="content-text-fa">نام دانشگاه:</p>
+                        <p class="content-text-en">
+                          Islamic Azad University, North Tehran branch
+                        </p>
+                        <p class="content-text-fa">
+                          دانشگاه آزاد واحد تهران شمال
+                        </p>
+                      </div>
+                      <div class="flex">
+                        <p class="content-text-en">field of study:</p>
+                        <p class="content-text-fa">رشته تحصیلی:</p>
+                        <p class="content-text-en">computer engineering</p>
+                        <p class="content-text-fa">مهندسی کامپیوتر</p>
+                      </div>
+                      <div class="flex">
+                        <p class="content-text-en">semester:</p>
+                        <p class="content-text-fa">ترم:</p>
+                        <p class="content-text-en">5</p>
+                        <p class="content-text-fa">5</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="arrow2">
+                    <svg fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18 9L12 15L6 9" stroke="#eae112" />
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Hidden description below -->
+                <div class="descriptionn2">
+                  <p class="descriptionn1p content-text-en">
+                    i studied in this uni for over 2 years i learn a little
+                    about c++ i know about product manegment and the way to do
+                    that i know a little about sql and other things that you
+                    learn in university in this feild.
+                  </p>
+                  <p class="descriptionn1p content-text-fa">
+                    من بیش از 2 سال در این دانشگاه تحصیل کردم، کمی در مورد c++
+                    یاد گرفتم، در مورد مدیریت محصول و روش انجام آن اطلاعات کمی
+                    در مورد sql و چیزهایی که شما در دانشگاه در این زمینه یاد می
+                    گیرید، می دانم.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ex -->
+        <!-- Projects -->
+        <div id="projects" class="content">
+          <div class="projects">
+            <div class="aboutHeader">
+              <p class="aboutMe content-text-en">Projects</p>
+              <p class="aboutMe content-text-fa">پروژه ها</p>
+              <p class="des content-text-en">
+                This is my projects and some of them have domain(URL) and some
+                of them are still in process and some of them just pracitce
+              </p>
+
+              <p class="des content-text-fa">
+                اینا پروژه های منه بعضیاش دامنه دارن بعضیاش هنوز تو مرحله کد
+                زدنه و بعضیاشم فقط تمرینه
+              </p>
+            </div>
+            <div class="mainAbout">
+              <div class="project-container">
+                <!-- Icons!!! -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Projects -->
+        <!-- Contact -->
+        <div id="contact" class="content">
+          <div class="about">
+            <div class="aboutHeader">
+              <p class="aboutMe content-text-en">Contact Me</p>
+              <p class="aboutMe content-text-fa">با من تماس بگیرید</p>
+            </div>
+            <div class="itemCon">
+              <div class="item">
+                <div>
+                  <svg
+                    width="74"
+                    height="75"
+                    viewBox="0 0 74 75"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="37" cy="37.5" r="37" fill="#EAE112" />
+                    <g clip-path="url(#clip0_53_438)">
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M18.1451 14.4091C18.6846 13.8704 19.3324 13.4526 20.0456 13.1832C20.7589 12.9138 21.5212 12.799 22.2821 12.8466C23.043 12.8941 23.7852 13.1028 24.4593 13.4588C25.1335 13.8148 25.7243 14.3101 26.1926 14.9117L31.7272 22.0219C32.7416 23.3261 33.0992 25.025 32.6984 26.6284L31.0118 33.3809C30.9252 33.7307 30.9303 34.0968 31.0264 34.4441C31.1225 34.7914 31.3065 35.108 31.5607 35.3635L39.1364 42.9392C39.3922 43.1939 39.7093 43.3782 40.0572 43.4743C40.4051 43.5705 40.7719 43.5752 41.1221 43.4881L47.8715 41.8015C48.6628 41.6048 49.4884 41.59 50.2863 41.7582C51.0841 41.9264 51.8335 42.2733 52.478 42.7727L59.5882 48.3042C62.1443 50.293 62.3786 54.07 60.0908 56.3548L56.9026 59.543C54.6209 61.8246 51.2108 62.8267 48.0318 61.7075C39.8939 58.8479 32.5058 54.1895 26.4177 48.0791C20.3076 41.9919 15.6493 34.6049 12.7893 26.468C11.6732 23.2922 12.6752 19.879 14.9569 17.5973L18.1451 14.4091Z"
+                        fill="black"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_53_438">
+                        <rect
+                          width="49.3333"
+                          height="49.3333"
+                          fill="white"
+                          transform="translate(12.3335 12.8333)"
+                        />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
+                <div class="callCont">
+                  <div><p class="Call content-text-en">Call Me</p></div>
+                  <div><p class="Call content-text-fa">تماس بگیرید</p></div>
+                  <div><p class="Call ">0992 290 9072</p></div>
+                </div>
+              </div>
+              <div class="item">
+                <div>
+                  <svg
+                    width="74"
+                    height="75"
+                    viewBox="0 0 74 75"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="37" cy="37.5" r="37" fill="#EAE112" />
+                    <g clip-path="url(#clip0_53_438)">
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M18.1451 14.4091C18.6846 13.8704 19.3324 13.4526 20.0456 13.1832C20.7589 12.9138 21.5212 12.799 22.2821 12.8466C23.043 12.8941 23.7852 13.1028 24.4593 13.4588C25.1335 13.8148 25.7243 14.3101 26.1926 14.9117L31.7272 22.0219C32.7416 23.3261 33.0992 25.025 32.6984 26.6284L31.0118 33.3809C30.9252 33.7307 30.9303 34.0968 31.0264 34.4441C31.1225 34.7914 31.3065 35.108 31.5607 35.3635L39.1364 42.9392C39.3922 43.1939 39.7093 43.3782 40.0572 43.4743C40.4051 43.5705 40.7719 43.5752 41.1221 43.4881L47.8715 41.8015C48.6628 41.6048 49.4884 41.59 50.2863 41.7582C51.0841 41.9264 51.8335 42.2733 52.478 42.7727L59.5882 48.3042C62.1443 50.293 62.3786 54.07 60.0908 56.3548L56.9026 59.543C54.6209 61.8246 51.2108 62.8267 48.0318 61.7075C39.8939 58.8479 32.5058 54.1895 26.4177 48.0791C20.3076 41.9919 15.6493 34.6049 12.7893 26.468C11.6732 23.2922 12.6752 19.879 14.9569 17.5973L18.1451 14.4091Z"
+                        fill="black"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_53_438">
+                        <rect
+                          width="49.3333"
+                          height="49.3333"
+                          fill="white"
+                          transform="translate(12.3335 12.8333)"
+                        />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
+                <div class="callCont">
+                  <div><p class="Call content-text-en">Text Me</p></div>
+                  <div><p class="Call content-text-fa">پیام بدهید</p></div>
+                  <div><p class="Call ">0992 290 9072 </p></div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <!-- Contact -->
+      </div>
+    </div>
+    <script src="js.js"></script>
+  </body>
+</html>
