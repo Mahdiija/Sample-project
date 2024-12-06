@@ -9,9 +9,15 @@
   --sidebar-active: #1abc9c;
 }
 
+@font-face {
+  font-family: "MyFont";
+  src: url("./font/static/Oswald-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: "MyFont", sans-serif !important;
   display: flex;
   height: 100vh;
   background-color: var(--bg-color);
@@ -33,6 +39,33 @@ body {
   align-items: center;
   padding: 10px 0;
   gap: 16px;
+  overflow: auto;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+  z-index: 9999;
+}
+.sidebar.hidden {
+  transform: translateX(-402px);
+}
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background-color: inherit;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.menu-toggle svg > g > g > line {
+  stroke: #eae112;
 }
 .title {
   color: #eae112;
@@ -113,9 +146,25 @@ button#language-switcher:hover {
   color: #eae112;
 }
 
+.close-button {
+  display: block;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  color: #eae112;
+}
+
 .main-content {
-  flex: 1;
   padding: 20px;
+  margin-left: 402px;
+  width: 100%;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),
     radial-gradient(
       circle at 70% 30%,
@@ -130,7 +179,9 @@ button#language-switcher:hover {
   overflow-y: auto;
   color: white;
 }
-
+.sidebar.hidden + .main-content {
+  margin-left: 0;
+}
 .content {
   display: none;
 }
@@ -180,7 +231,6 @@ button#language-switcher:hover {
   display: none;
 }
 
-/* When Persian is active, show Persian content */
 body.fa .content-text-en {
   display: none;
 }
@@ -196,6 +246,16 @@ body.fa .content-text-fa {
   align-items: center;
   height: 100%;
   gap: 28px;
+  padding: 40px 0;
+}
+.cantact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 28px;
+  padding: 40px 0;
 }
 .projects {
   display: flex;
@@ -240,6 +300,14 @@ body.fa .content-text-fa {
   margin: 0 auto;
   gap: 64px;
 }
+.mainProject {
+  display: flex;
+
+  justify-content: center;
+  width: 90%;
+  margin: 0 auto;
+  gap: 64px;
+}
 .rightSide {
   display: flex;
   flex-direction: column;
@@ -250,6 +318,7 @@ body.fa .content-text-fa {
   font-size: 36px;
   margin: 0;
   margin-bottom: 28px;
+  text-align: center;
 }
 .position {
   font-size: 26px;
@@ -325,6 +394,7 @@ body.fa .content-text-fa {
 .icon-container {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   align-items: center;
   margin-top: 0px;
   gap: 30px;
@@ -336,7 +406,7 @@ body.fa .content-text-fa {
 }
 
 .icon-container .icon:hover {
-  transform: scale(1.2); /* Scale the icon on hover */
+  transform: scale(1.2);
 }
 .project-container {
   display: flex;
@@ -357,7 +427,7 @@ body.fa .content-text-fa {
 }
 
 .project-container .project:hover {
-  transform: scale(1.05); /* Scale the icon on hover */
+  transform: scale(1.05);
 }
 
 .icon-link {
@@ -368,30 +438,29 @@ body.fa .content-text-fa {
 
 .icon-link .description {
   position: absolute;
-  bottom: 40%; /* Adjust based on your layout */
+  bottom: 40%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(108, 108, 108, 0.8); /* Semi-transparent background */
+  background-color: rgba(108, 108, 108, 0.8);
   color: #fff;
   padding: 8px 12px;
   border-radius: 5px;
   font-size: 14px;
   width: 80%;
-  opacity: 0; /* Initially hidden */
+  opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s, visibility 0.3s;
-  pointer-events: none; /* Prevent blocking mouse hover on the image */
+  pointer-events: none;
 }
 
-/* Hover effect for the description and image */
 .icon-link:hover .description {
   opacity: 1;
-  visibility: visible; /* Show the description */
+  visibility: visible;
 }
 
 .icon-link:hover .project {
   transform: scale(1.1);
-  opacity: 0.3; /* Slight zoom effect */
+  opacity: 0.3;
 }
 .mainCard {
   display: flex;
@@ -408,150 +477,143 @@ body.fa .content-text-fa {
   border-radius: 16px;
   background-color: var(--bg);
   display: flex;
-  flex-direction: column; /* Stack content vertically */
+  flex-direction: column;
   cursor: pointer;
-  overflow: hidden; /* Prevent overflow when collapsed */
-  transition: all 0.3s ease; /* Smooth transition */
+  overflow: hidden;
+  transition: all 0.3s ease;
   position: relative;
 }
-.flex{
+.flex {
   display: flex;
   gap: 8px;
   color: var(--text-color);
 }
-.ExIcon{
+.ExIcon {
   width: 170px;
   height: 170px;
   border-radius: 16px;
 }
-.cardflex{
+.cardflex {
   display: flex;
   gap: 32px;
   align-items: center;
 }
 .arrow {
-   display: flex;
-   justify-content: center;
-   position: absolute;
-   left: 49%;
-   bottom: 10px;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 49%;
+  bottom: 10px;
 }
 .arrow > svg {
   stroke-width: 2px;
   width: 20px;
   text-align: center;
   height: 20px;
-  transition: transform 0.3s ease; 
-
+  transition: transform 0.3s ease;
 }
 
-.card.expanded .arrow > svg  {
-  transform: rotate(180deg); /* Rotate arrow upwards */
-  transition: transform 0.3s ease; 
+.card.expanded .arrow > svg {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
 }
 .descriptionn {
-  
   color: #fff;
   font-size: 14px;
   line-height: 1.5;
-  opacity: 0; /* Initially hidden */
-  max-height: 0; /* Collapse the height */
-  overflow: hidden; /* Prevent overflowing content */
-  transition: all 0.3s ease; /* Smooth transition */
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
-
 
 .card.expanded .descriptionn {
-  opacity: 1; /* Show description */
-  max-height: 100px; /* Adjust based on content */
-  margin-top: 16px; /* Space between content and description */
-  padding-bottom: 20px ;
+  opacity: 1;
+  max-height: 100px;
+  margin-top: 16px;
+  padding-bottom: 20px;
 }
 .arrow1 {
-   display: flex;
-   justify-content: center;
-   position: absolute;
-   left: 49%;
-   bottom: 10px;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 49%;
+  bottom: 10px;
 }
 .arrow1 > svg {
   stroke-width: 2px;
   width: 20px;
   text-align: center;
   height: 20px;
-  transition: transform 0.3s ease; 
-
+  transition: transform 0.3s ease;
 }
 .arrow2 {
-   display: flex;
-   justify-content: center;
-   position: absolute;
-   left: 49%;
-   bottom: 10px;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 49%;
+  bottom: 10px;
 }
 .arrow2 > svg {
   stroke-width: 2px;
   width: 20px;
   text-align: center;
   height: 20px;
-  transition: transform 0.3s ease; 
-
+  transition: transform 0.3s ease;
 }
 
-.card.expanded1 .arrow1 > svg  {
-  transform: rotate(180deg); /* Rotate arrow upwards */
-  transition: transform 0.3s ease; 
+.card.expanded1 .arrow1 > svg {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
 }
-.card.expanded2 .arrow2 > svg  {
-  transform: rotate(180deg); /* Rotate arrow upwards */
-  transition: transform 0.3s ease; 
+.card.expanded2 .arrow2 > svg {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
 }
 .descriptionn1 {
   color: #fff;
   font-size: 14px;
   line-height: 1.5;
-  opacity: 0; /* Initially hidden */
-  max-height: 0; /* Collapse the height */
-  overflow: hidden; /* Prevent overflowing content */
-  transition: all 0.3s ease; /* Smooth transition */
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 .descriptionn2 {
   color: #fff;
   font-size: 14px;
   line-height: 1.5;
-  opacity: 0; /* Initially hidden */
-  max-height: 0; /* Collapse the height */
-  overflow: hidden; /* Prevent overflowing content */
-  transition: all 0.3s ease; /* Smooth transition */
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
-.descriptionn1p{
+.descriptionn1p {
   margin: 0;
   text-align: center;
   color: var(--text-color);
 }
 
 .card.expanded1 .descriptionn1 {
-  opacity: 1; /* Show description */
-  max-height: 100px; /* Adjust based on content */
-  margin-top: 16px; /* Space between content and description */
-  padding-bottom: 20px ;
-
+  opacity: 1;
+  max-height: 100px;
+  margin-top: 16px;
+  padding-bottom: 20px;
 }
 .card.expanded2 .descriptionn2 {
-  opacity: 1; /* Show description */
-  max-height: 100px; /* Adjust based on content */
-  margin-top: 16px; /* Space between content and description */
-  padding-bottom: 20px ;
-
+  opacity: 1;
+  max-height: 100px;
+  margin-top: 16px;
+  padding-bottom: 20px;
 }
 
-.itemCon{
+.itemCon {
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
   justify-content: center;
 }
-.item{
+.item {
   padding: 24px 28px;
   display: flex;
   justify-content: space-between;
@@ -559,42 +621,99 @@ body.fa .content-text-fa {
   border-radius: 16px;
   min-width: 300px;
   align-items: center;
-  
 }
-.callCont{
+.callCont {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
-.Call{
+.Call {
   font-size: 24px;
   color: var(--text-color);
   margin: 0;
 }
 
-
 ::-webkit-scrollbar {
-  width: 12px; 
-  height: 12px; 
+  width: 12px;
+  height: 12px;
 }
-
 
 ::-webkit-scrollbar-thumb {
-  background-color: #a9a9a9; 
-  border-radius: 10px; 
-  border: 3px solid #f1f1f1; 
+  background-color: #a9a9a9;
+  border-radius: 10px;
+  border: 3px solid #f1f1f1;
 }
-
 
 ::-webkit-scrollbar-track {
-  background-color: #e0e0e0; 
-  border-radius: 10px; 
+  background-color: #e0e0e0;
+  border-radius: 10px;
 }
-
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #a9a9a9; 
+  background-color: #a9a9a9;
 }
 
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
 
+  .sidebar {
+    transform: translateX(-250px);
+  }
 
+  .sidebar.visible {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none;
+  }
+  .close-button {
+    display: none;
+  }
+  .sidebar {
+    transform: translateX(0);
+  }
+}
+@media (max-width: 550px) {
+  .cardflex {
+    flex-direction: column;
+  }
+  .Repository {
+    padding: 16px 40px;
+  }
+  .Hire {
+    padding: 16px 40px;
+  }
+}
+@media (max-width: 1166px) {
+  .about {
+    padding: 500px 0;
+  }
+  .mainAbout {
+    flex-direction: column;
+  }
+  .image {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  }
+  .position {
+    margin: auto;
+  }
+  .buttonsAbout {
+    margin: auto;
+  }
+}
+@media (max-width: 983px) {
+  .cardflex {
+    flex-direction: column;
+  }
+}
